@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/drawer_zhihu"
+        android:checkable="true"
+        android:checked="true"
+        android:icon="@mipmap/safe"
+        android:title="@string/zhihu" />
+    <item
+        android:id="@+id/drawer_wechat"
+        android:checkable="true"
+        android:icon="@mipmap/about_us"
+        android:title="@string/wechat" />
+    <item
+        android:id="@+id/drawer_gank"
+        android:checkable="true"
+        android:icon="@mipmap/share"
+        android:title="@string/gank" />
+    <item
+        android:id="@+id/drawer_gold"
+        android:checkable="true"
+        android:icon="@mipmap/exit"
+        android:title="@string/gold" />
+
+</menu>
+

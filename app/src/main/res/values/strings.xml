@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">DrawWithU</string>
+
+    <string name="msg_title">提示</string>
+    <string name="login">登录</string>
+    <string name="Username">账号</string>
+    <string name="Password">密码</string>
+    <string name="forgot_your_password">忘记密码了 ?</string>
+    <string name="go">GO</string>
+    <string name="repeat_password">再次输入密码</string>
+    <string name="next">GO</string>
+    <string name="register">注册</string>
+    <string name="title_activity_register">注册</string>
+    <string name="pager_empty">空空如也</string>
+
+    <string name="online_people">在线</string>
+    <string name="tab_message">消息</string>
+    <string name="tab_datas_package">资料</string>
+
+    <string name="about_award">请作者吃糖(￣▽￣)</string>
+    <string name="error_tips">糟糕！加载失败了ヽ(≧Д≦)ノ</string>
+    <string name="app_intro">DrawWithU</string>
+
+    //main drawer
+    <string name="zhihu">安全</string>
+    <string name="wechat">关于</string>
+    <string name="gank">分享</string>
+    <string name="gold">退出</string>
+</resources>

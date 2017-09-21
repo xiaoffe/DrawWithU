@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ripple="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/view_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="176dp"
+        android:background="#45c6be"
+        android:elevation="0.5pt"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="10dp">
+
+        <!--圆形头像-->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/my_avatar"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="15dp"
+            android:src="@mipmap/yilong" />
+
+
+        <!--昵称-->
+        <TextView
+            android:id="@+id/selfe_center_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="大大的良民"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+
+        <!--年级-->
+        <TextView
+            android:id="@+id/selfe_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="hello 我是一龙师傅"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+    <!--个人介绍-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#CCCCCC" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:elevation="0.5pt"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="个人介绍"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/selfe_center_sign"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="10dp"
+            android:text="我把问题拍下来发给你，来教教我吧。"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#CCCCCC" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#f0f0f0"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <com.xiaoffe.drawwithu.widget.RippleView
+                android:id="@+id/left_menu_safe_text"
+                style="@style/left_menu_text_style"
+                android:clickable="true"
+                android:drawableLeft="@mipmap/icon_rest_money"
+                android:text="账户余额"
+                ripple:alpha_Factor="0.7"
+                ripple:ripple_Color="#D2D2D2" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#CCCCCC" />
+
+            <com.xiaoffe.drawwithu.widget.RippleView
+                android:id="@+id/img_study_history"
+                style="@style/left_menu_text_style"
+                android:clickable="true"
+                android:drawableLeft="@mipmap/icon_study_history"
+                android:text="求学记录"
+                ripple:alpha_Factor="0.7"
+                ripple:ripple_Color="#D2D2D2" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#CCCCCC" />
+
+            <com.xiaoffe.drawwithu.widget.RippleView
+                android:id="@+id/img_ace_student"
+                style="@style/left_menu_text_style"
+                android:clickable="true"
+                android:drawableLeft="@mipmap/icon_study_king"
+                android:text="学习达人"
+                ripple:alpha_Factor="0.7"
+                ripple:ripple_Color="#D2D2D2" />
+
+        </LinearLayout>
+    </ScrollView>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#CCCCCC" />
+</LinearLayout>
