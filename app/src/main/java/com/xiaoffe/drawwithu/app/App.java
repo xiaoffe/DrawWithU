@@ -24,6 +24,7 @@ import java.util.Set;
  */
 public class App extends Application{
 
+    //my test of git
     private static App instance;
     public static AppComponent appComponent;
     private Set<Activity> allActivities;

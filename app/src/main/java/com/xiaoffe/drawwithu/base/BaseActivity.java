@@ -16,6 +16,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends SimpleActivi
     @Inject
     protected T mPresenter;
 
+    //test1
     protected ActivityComponent getActivityComponent(){
         return  DaggerActivityComponent.builder()
                 .appComponent(App.getAppComponent())
