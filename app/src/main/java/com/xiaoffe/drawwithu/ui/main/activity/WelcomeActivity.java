@@ -21,6 +21,7 @@ import butterknife.BindView;
  */
 //在这个项目里，没有看到，在Activity里面，直接以field的方式来@Inject注入依赖的。
 public class WelcomeActivity extends BaseActivity<WelcomePresenter> implements WelcomeContract.View {
+    //hehe
     private final String TAG = "welcome";
     @BindView(R.id.iv_welcome_bg)
     ImageView ivWelcomeBg;

@@ -26,6 +26,7 @@ import io.reactivex.functions.Consumer;
  */
 
 public class LoginPresenter extends RxPresenter<LoginContract.View> implements LoginContract.Presenter{
+    //gaga
     private static final String TAG = "LoginPresenter";
     private static final int COUNT_DOWN_TIME = 2200;
 
