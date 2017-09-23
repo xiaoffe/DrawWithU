@@ -27,7 +27,7 @@ import io.reactivex.functions.Predicate;
     //<MainContract.View>是V
     //DataManager是M
 public class MainPresenter extends RxPresenter<MainContract.View> implements MainContract.Presenter{
-
+    //haha
     private DataManager mDataManager;
     private App mApp;
 
