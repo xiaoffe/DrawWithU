@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="?android:selectableItemBackground"
     android:orientation="vertical">
 
@@ -20,11 +20,13 @@
             <!--android:layout_width="60dp"-->
             <!--android:layout_height="60dp"-->
             <!--android:src="@drawable/tiaotiao"/>-->
-        <ImageView
+        <com.xiaoffe.drawwithu.widget.RoundAngleImageView
             android:id="@+id/teacher_icon"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@mipmap/tiaotiao"/>
+            app:roundHeight="10dp"
+            app:roundWidth="10dp"
+            android:src="@mipmap/ginntoki"/>
     </LinearLayout>
 
 

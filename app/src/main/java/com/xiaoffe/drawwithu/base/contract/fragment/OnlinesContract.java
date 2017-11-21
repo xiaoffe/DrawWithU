@@ -4,6 +4,8 @@ import com.xiaoffe.drawwithu.base.BasePresenter;
 import com.xiaoffe.drawwithu.base.BaseView;
 import com.xiaoffe.drawwithu.model.bean.OnlinesBean;
 
+import java.util.List;
+
 /**
  * Created by codeest on 16/8/11.
  */
@@ -12,10 +14,13 @@ public interface OnlinesContract {
 
     interface View extends BaseView {
 
-        void showContent(OnlinesBean info);
+//        void showContent(OnlinesBean info);
+//
+//        void showMoreContent(OnlinesBean info);
 
-        void showMoreContent(OnlinesBean info);
+        void showContent(List<String> friendIds, List<String> friendSigns, List<String> friendFaceUrls);
 
+        void showMoreContent(List<String> friendIds, List<String> friendSigns, List<String> friendFaceUrls);
     }
 
     interface Presenter extends BasePresenter<View> {

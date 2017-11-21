@@ -30,5 +30,9 @@ public interface WelcomeContract {
         void getWelcomeData();
 
         void tryLogin();
+
+        void downloadApk();
+
+        void getVersionCode();
     }
 }

@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 
     package="com.xiaoffe.drawwithu">
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -10,7 +10,8 @@
     <uses-permission android:name="android.permission.READ_LOGS" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
-
+    <!--在SD卡中创建与删除文件权限-->
+    <uses-permission android:name="android.permission.MOUNT_FORMAT_FILESYSTEMS"/>
     <application
         android:name="com.xiaoffe.drawwithu.app.App"
         android:allowBackup="true"
@@ -19,6 +20,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        //activeandroid
+        <meta-data android:name="AA_DB_NAME" android:value="mydatabase.db" />
+        <meta-data android:name="AA_DB_VERSION" android:value="5" />
+        <meta-data
+            android:name="AA_MODELS"
+            android:value="com.xiaoffe.drawwithu.model.bean.User"/>
         //主类
         <activity android:name=".ui.main.activity.WelcomeActivity"
             android:theme="@style/SplashTheme"
@@ -49,6 +56,11 @@
         <service android:name="com.xiaoffe.drawwithu.service.MsgChatService" />
         <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:screenOrientation="portrait" />
+        <service android:name=".service.DownFileService" />
+        <activity android:name=".ui.main.activity.TestActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

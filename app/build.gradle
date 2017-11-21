@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+//apply plugin: 'realm-android'
 android {
     compileSdkVersion 25
     buildToolsVersion "26.0.0"
@@ -17,10 +18,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    //测试时候用appache的http  171012 之后删除
+    useLibrary 'org.apache.http.legacy'
+}
+//for activeandroid
+repositories {
+    mavenCentral()
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -58,13 +66,16 @@ dependencies {
     compile 'com.karumi:expandableselector:1.0.0'
     compile 'com.theartofdev.edmodo:android-image-cropper:2.4.0'
     //tencent call
-//    compile 'com.tencent.ilivesdk:ilivesdk:1.5.3.0.2'
-//    compile 'com.tencent.livesdk:livesdk:1.1.1'
-//    compile 'com.tencent.ilivefilter:ilivefilter:1.1.15'
-//    compile 'com.tencent.rtmpsdk:rtmpsdk:1.0.1'
+    //compile 'com.tencent.ilivesdk:ilivesdk:1.5.3.0.2'
+    //compile 'com.tencent.livesdk:livesdk:1.1.1'
+    //compile 'com.tencent.ilivefilter:ilivefilter:1.1.15'
+    //compile 'com.tencent.rtmpsdk:rtmpsdk:1.0.1'
     compile 'com.tencent.ilivesdk:ilivesdk:1.5.2.0.6'
     compile 'com.tencent.callsdk:callsdk:1.0.16'
     //network state
-//    compile 'com.github.pwittchen:reactivenetwork:0.9.1'
+    //compile 'com.github.pwittchen:reactivenetwork:0.9.1'
     compile 'com.github.pwittchen:reactivenetwork-rx2:0.9.0'
+    //acitveandroid
+    compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
+
 }

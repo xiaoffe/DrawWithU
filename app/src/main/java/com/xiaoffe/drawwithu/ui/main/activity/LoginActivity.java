@@ -6,6 +6,7 @@ import android.os.Build;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.CardView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,7 +25,7 @@ import butterknife.OnClick;
  */
 
 public class LoginActivity extends BaseActivity<LoginPresenter> implements LoginContract.View{
-
+    private static String TAG = "LoginActivity";
     @BindView(R.id.et_username)
     EditText etUsername;
     @BindView(R.id.et_password)
@@ -90,6 +91,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
                 jumpToRegister();
                 break;
             case R.id.bt_go:
+                Log.d(TAG, "click login btn");
                 login();
                 break;
         }

@@ -10,6 +10,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.CardView;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.animation.AccelerateInterpolator;
@@ -28,6 +29,7 @@ import butterknife.OnClick;
  */
 
 public class RegisterActivity extends BaseActivity<RegisterPresenter> implements RegisterContract.View{
+    private static String TAG = "RegisterActivity";
     @BindView(R.id.fab)
     FloatingActionButton fab;
     @BindView(R.id.cv_add)
@@ -93,6 +95,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.bt_go:
+                Log.d(TAG, "click register btn");
                 String userName = etUsername.getText().toString();
                 String password = etPassword.getText().toString();
                 mPresenter.tryRejester(userName, password);

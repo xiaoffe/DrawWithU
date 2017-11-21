@@ -40,4 +40,16 @@
     </declare-styleable>
 
     <attr name="expandableItemStyle"/>
+
+
+    <declare-styleable name="RoundAngleImageView" >
+
+        <attr
+            name="roundWidth"
+            format="dimension" />
+
+        <attr
+            name="roundHeight"
+            format="dimension" />
+    </declare-styleable>
 </resources>

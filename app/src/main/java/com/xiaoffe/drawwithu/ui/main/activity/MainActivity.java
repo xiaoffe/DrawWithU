@@ -99,12 +99,16 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
             public boolean onNavigationItemSelected(@android.support.annotation.NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.drawer_zhihu:
+                        //for test add friend
+                        Intent intent = new Intent(MainActivity.this, TestActivity.class);
+                        startActivity(intent);
                         break;
                     case R.id.drawer_gank:
                         break;
                     case R.id.drawer_wechat:
                         break;
                     case R.id.drawer_gold:
+
                         break;
                 }
                 mNavigationView.getMenu().findItem(item.getItemId()).setChecked(true);
@@ -214,3 +218,19 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         SnackbarUtil.show(layout, "网络连接不上/(ㄒoㄒ)/~~222");
     }
 }
+//  君さえいれば
+//　君さえいれば、どんな勝負も勝ち続ける、暗闇を切り裂くようにi　need　your　love
+//  数センチのズレを重ねて、偶然は運命になる
+//  屈託なく笑う声に、免じて四次元の会話も慣れて、つい引き込まれてゆく
+//　君さえいれば、遥かな道も越えて行ける
+//  どんな時も守り抜く
+//　大地の水は、透き通る花を咲かせる糧
+//　暗闇を、切り裂くようにI　need　your　love
+//  生まれ変わっても、そんなセリフ
+//  こだわりは僕の弱さ
+//  ちょっと逃げ腰だとしても、変わらぬ、愛は誓える、簡単じゃない二人だからいい
+//  美しいのは壊れかけたと知ってるから、キスで互いを隠して
+//  水平線の先に明日があるとしたら、波風も悪くはないにiｍ　no　match　for　you
+//  君さえいれば、どんな勝負も勝ち続ける、どんな時も守り抜く
+//  大地の水は透き通る花を、咲かせる糧、暗闇を切り裂くようにi　need　you　love
+//　ありふれた言葉を並べて　lalala

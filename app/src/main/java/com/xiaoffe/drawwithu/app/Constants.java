@@ -136,6 +136,7 @@ public class Constants {
 
     public static final String CUT_PIC_PATH = Environment.getExternalStorageDirectory().toString() + "/xiaoffe/";
     public static final String CHOOSE_PIC_PATH = Environment.getExternalStorageDirectory().toString() + "/drawwithu/";
+    public static final String APK_PATH = Environment.getExternalStorageDirectory().getPath() + "/drawwithuapk/";
 
     public static final String SEND_PEER = "send_peer";
     public static final String SEND_PEER_DRAW = "send_peer_draw";

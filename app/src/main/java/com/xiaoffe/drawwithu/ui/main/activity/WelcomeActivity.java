@@ -1,6 +1,9 @@
 package com.xiaoffe.drawwithu.ui.main.activity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -11,6 +14,7 @@ import com.xiaoffe.drawwithu.base.contract.main.WelcomeContract;
 import com.xiaoffe.drawwithu.component.ImageLoader;
 import com.xiaoffe.drawwithu.model.bean.ZhuangbiImage;
 import com.xiaoffe.drawwithu.presenter.main.WelcomePresenter;
+import com.xiaoffe.drawwithu.service.DownFileService;
 
 import java.util.List;
 
@@ -28,6 +32,13 @@ public class WelcomeActivity extends BaseActivity<WelcomePresenter> implements W
     @BindView(R.id.tv_welcome_author)
     TextView tvWelcomeAuthor;
 
+    int REQUEST_EXTERNAL_STORAGE = 1;
+    String[] PERMISSIONS_STORAGE = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
+
+
     @Override
     protected void initInject() {
         getActivityComponent().inject(this);
@@ -40,9 +51,22 @@ public class WelcomeActivity extends BaseActivity<WelcomePresenter> implements W
 
     @Override
     protected void initEventAndData() {
-//        mPresenter.getWelcomeData();
-        //把tryLogin（）放到获取装逼图片后面玩一下
-    mPresenter.tryLogin();
+        int permission = ActivityCompat.checkSelfPermission(WelcomeActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(
+                    WelcomeActivity.this,
+                    PERMISSIONS_STORAGE,
+                    REQUEST_EXTERNAL_STORAGE
+            );
+        }
+        //登录
+        mPresenter.tryLogin();
+        //获取最新apk的版本号
+        mPresenter.getVersionCode();
+        //下载apk
+        Intent intent = new Intent(WelcomeActivity.this, DownFileService.class);
+//        startService(intent);
+//    mPresenter.downloadApk();
     }
 
     @Override

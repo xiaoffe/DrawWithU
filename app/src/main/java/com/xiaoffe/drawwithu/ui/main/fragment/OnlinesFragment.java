@@ -10,6 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.xiaoffe.drawwithu.R;
 import com.xiaoffe.drawwithu.app.Constants;
 import com.xiaoffe.drawwithu.base.RootFragment;
@@ -44,9 +47,13 @@ public class OnlinesFragment extends RootFragment<OnlinesPresenter> implements O
     private static final int ITEM_TYPE_NORMAL = 1;//普通的条目
     private static final int ITEM_TYPE_BLANK = 2;//最后一条空白的条目
     private static final int ITEM_TYPE_MORE = 3;//这是加载更多的界面
-    private List<String> mDataList = new ArrayList<>();
+//    private List<String> mDataList = new ArrayList<>();
     private RefreshItemView refreshItemView;
     private AskListAdapter askListAdapter;
+
+    private List<String> mFriendIds = new ArrayList<>();
+    private List<String> mFriendSigns = new ArrayList<>();
+    private List<String> mFriendFaceUrls = new ArrayList<>();
     @Override
     protected void initEventAndData() {
         super.initEventAndData();
@@ -71,16 +78,54 @@ public class OnlinesFragment extends RootFragment<OnlinesPresenter> implements O
         });
         mPresenter.getOnlineData();
     }
+//
+//    @Override
+//    public void showContent(OnlinesBean info) {
+//        if (swipeRefresh.isRefreshing()) {
+//            swipeRefresh.setRefreshing(false);
+//        }
+//        mDataList.clear();
+//        for(int n=0; n<10; n++){mDataList.add("dummy data");}
+//        askListAdapter.notifyDataSetChanged();
+//        if(mDataList.size()>=51){
+//            refreshItemView.reflashUI(RefreshItemView.LOADMORE_NONE);
+//        }else{
+//            refreshItemView.reflashUI(RefreshItemView.LOADMORE_LOADING);
+//        }
+//    }
+//
+//    @Override
+//    public void showMoreContent(OnlinesBean info) {
+//        if (swipeRefresh.isRefreshing()) {
+//            swipeRefresh.setRefreshing(false);
+//            return;
+//        }
+//        if(mDataList.size()<51){
+//            for(int n=0; n<10; n++){
+//                mDataList.add("dummy data");
+//            }
+//        }
+//        askListAdapter.notifyDataSetChanged();
+//        if(mDataList.size()>=51){
+//            refreshItemView.reflashUI(RefreshItemView.LOADMORE_NONE);
+//        }else{
+//            refreshItemView.reflashUI(RefreshItemView.LOADMORE_LOADING);
+//        }
+//    }
 
     @Override
-    public void showContent(OnlinesBean info) {
+    public void showContent(List<String> friendIds, List<String> friendSigns, List<String> friendFaceUrls) {
         if (swipeRefresh.isRefreshing()) {
             swipeRefresh.setRefreshing(false);
         }
-        mDataList.clear();
-        for(int n=0; n<10; n++){mDataList.add("dummy data");}
+        mFriendIds.clear();
+        mFriendSigns.clear();
+        mFriendFaceUrls.clear();
+        mFriendIds.addAll(friendIds);
+        mFriendSigns.addAll(friendSigns);
+        mFriendFaceUrls.addAll(friendFaceUrls);
         askListAdapter.notifyDataSetChanged();
-        if(mDataList.size()>=51){
+        if(mFriendIds.size() >= 41){
             refreshItemView.reflashUI(RefreshItemView.LOADMORE_NONE);
         }else{
             refreshItemView.reflashUI(RefreshItemView.LOADMORE_LOADING);
@@ -88,18 +133,18 @@ public class OnlinesFragment extends RootFragment<OnlinesPresenter> implements O
     }
 
     @Override
-    public void showMoreContent(OnlinesBean info) {
+    public void showMoreContent(List<String> friendIds, List<String> friendSigns, List<String> friendFaceUrls) {
         if (swipeRefresh.isRefreshing()) {
             swipeRefresh.setRefreshing(false);
             return;
         }
-        if(mDataList.size()<51){
-            for(int n=0; n<10; n++){
-                mDataList.add("dummy data");
-            }
+        if(mFriendIds.size()<41){
+            mFriendIds.addAll(friendIds);
+            mFriendSigns.addAll(friendSigns);
+            mFriendFaceUrls.addAll(friendFaceUrls);
         }
         askListAdapter.notifyDataSetChanged();
-        if(mDataList.size()>=51){
+        if(mFriendIds.size()>=41){
             refreshItemView.reflashUI(RefreshItemView.LOADMORE_NONE);
         }else{
             refreshItemView.reflashUI(RefreshItemView.LOADMORE_LOADING);
@@ -152,10 +197,10 @@ public class OnlinesFragment extends RootFragment<OnlinesPresenter> implements O
         @Override
         public void onBindViewHolder(TeacherHolder holder, int position) {
             if (getItemViewType(position) == ITEM_TYPE_NORMAL) {
-                holder.setDatas(mDataList.get(position));
+                holder.setDatas(mFriendIds.get(position), mFriendSigns.get(position), mFriendFaceUrls.get(position));
             }
             //当移动到刷新条目的时候，就可以去加载数据了
-            if (position == mDataList.size()) {
+            if (position == mFriendIds.size()) {
                 //在这里开始加载数据
                 mPresenter.getMoreOnlineData();
             }
@@ -163,17 +208,17 @@ public class OnlinesFragment extends RootFragment<OnlinesPresenter> implements O
 
         @Override
         public int getItemCount() {
-            if (mDataList != null) {
-                return mDataList.size() + 2;
+            if (mFriendIds != null) {
+                return mFriendIds.size() + 2;
             }
             return 0;
         }
 
         @Override
         public int getItemViewType(int position) {
-            if (position == mDataList.size()) {
+            if (position == mFriendIds.size()) {
                 return ITEM_TYPE_MORE;
-            } else if (position == mDataList.size() + 1) {
+            } else if (position == mFriendIds.size() + 1) {
                 return ITEM_TYPE_BLANK;
             } else {
                 //否则返回正常的类型
@@ -201,8 +246,10 @@ public class OnlinesFragment extends RootFragment<OnlinesPresenter> implements O
         public TextView mGrades;
         private TextView mAskBtn;
         private View mLine;
-        private String datas;
         private View itemView;
+        private String friendId;
+        private String friendSign;
+        private String friendFaceUrl;
 
         public TeacherHolder(View itemView, int viewType) {
             super(itemView);
@@ -231,16 +278,25 @@ public class OnlinesFragment extends RootFragment<OnlinesPresenter> implements O
             }
         }
 
-        public void setDatas(String datas) {
-            this.datas = datas;
+        public void setDatas(String friendId, String friendSign, String friendFaceUrl) {
+            this.friendId = friendId;
+            this.friendSign = friendSign;
+            this.friendFaceUrl = friendFaceUrl;
+            mName.setText(friendId);
+            mSubject.setText(friendSign);
+            mGrades.setText("♪(^∇^*)");
 //            Glide.with(getActivity())
-//                    .load(datas.getAvatar()).transform(new GlideCircleTransform(getActivity()))
-//                    .override(UIUtils.dip2px(54), UIUtils.dip2px(54)).into(mAvater);
-            mName.setText("名字O(∩_∩)O哈哈~");
-            mSubject.setText("科目呢~~(>_<)~~");
-            mGrades.setText("没写年级♪(^∇^*)");
+//                    .load(friendFaceUrl)
+//                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+//                    .skipMemoryCache(true)
+//                    .into(mAvater);
             //还要设置问的状态
-            mAskBtn.setBackgroundResource(R.mipmap.wen_green_online);
+            if(friendFaceUrl==null){
+                mAskBtn.setBackgroundResource(R.mipmap.wen_grey_outline);
+            }else{
+                mAskBtn.setBackgroundResource(R.mipmap.wen_green_online);
+            }
+
         }
     }
 }

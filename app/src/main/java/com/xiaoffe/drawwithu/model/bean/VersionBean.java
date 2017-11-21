@@ -6,6 +6,8 @@ package com.xiaoffe.drawwithu.model.bean;
 
 public class VersionBean {
 
+    private String version;
+
     private String code;
 
     private String size;
@@ -36,4 +38,11 @@ public class VersionBean {
         return des;
     }
 
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
 }
